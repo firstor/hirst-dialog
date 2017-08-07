@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="komed-dialog-base">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `komed-dialog-base`
+     * komed-dialog-base
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class KomedDialogBase extends Polymer.Element {
+      static get is() { return 'komed-dialog-base'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'komed-dialog-base'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(KomedDialogBase.is, KomedDialogBase);
+  </script>
+</dom-module>
