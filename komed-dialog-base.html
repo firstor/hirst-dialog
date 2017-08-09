@@ -25,7 +25,7 @@ It contains 'X' button out of the box.
       }
     </style>
 
-    <paper-dialog id="dialog" opened="{{opened}}" with-backdrop>
+    <paper-dialog id="dialog" with-backdrop>
       <h2 hidden$="[[!title]]"><strong>[[title]]</strong></h2>
       <p><slot></slot></p>
     </paper-dialog>
@@ -62,6 +62,31 @@ It contains 'X' button out of the box.
             notify: true
           }
         };
+      }
+
+      /**
+      * Opens the dialog
+      */
+      open() {
+        // Attach dialog to the body to ensure it's on top of all existing overlays
+        Polymer.dom(document.body).appendChild(this);
+
+        // Wait until dialog is added to the DOM (required for Safari)
+        setTimeout(function() {
+          this.$.dialog.open();
+        }.bind(this), 1);
+      }
+
+      /**
+      * Closes the alert dialog
+      */
+      close() {
+        this.$.dialog.close();
+
+        // Remove the dialog from the DOM
+        if (this.parentNode) {
+          Polymer.dom(this.parentNode).removeChild(this);
+        }
       }
     }
 
