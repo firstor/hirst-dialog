@@ -16,13 +16,54 @@ It contains 'X' button out of the box.
 </komed-dialog-base>
 ```
 
+### Styling
+
+The following custom properties and mixins are available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--komed-dialog` | Mixin applied to the dialog | `{}`
+`--komed-dialog-color` | Color of the dialog | `Based on the button's color`
+`--komed-dialog-max-width` | Max width of the dialog | `800px`
+`--komed-dialog-max-height` | Max height of the dialog | `600px`
+`--komed-dialog-title` | Mixin applied to the dialog title | `{}`
+`--komed-dialog-title-color` | Color of the dialog title | ``
+`--komed-dialog-close` | Mixin applied to the dialog close button | `{}`
+`--komed-dialog-close-color` | Color of the dialog close button | ``
+`--komed-dialog-close-size` | Size of the dialog close button | `32px`
+
 @demo demo/index.html
 -->
 <dom-module id="komed-dialog-base">
   <template>
     <style>
       :host {
-        display: block;
+        --paper-dialog: {
+          width: 100vw;
+          height: 100vh;
+          overflow: auto;
+          padding: 0px;
+          @apply --komed-dialog;
+          color: var(--komed-dialog-color);
+          max-width: var(--komed-dialog-max-width, 800px);
+          max-height: var(--komed-dialog-max-height, 600px);
+        };
+        --paper-dialog-title: {
+          @apply --komed-dialog-title;
+          color: var(--komed-dialog-title-color);
+        };
+      }
+
+      paper-icon-button[close] {
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        margin: 0;
+        padding: 0;
+        @apply --komed-dialog-close;
+        color: var(--komed-dialog-close-color);
+        width: var(--komed-dialog-close-size, 32px);
+        height: var(--komed-dialog-close-size, 32px);
       }
     </style>
 
@@ -57,13 +98,6 @@ It contains 'X' button out of the box.
           title: {
             type: String,
             value: null
-          },
-          /**
-           * True if the dialog is currently opened
-           */
-          opened: {
-            true: Boolean,
-            notify: true
           }
         };
       }
