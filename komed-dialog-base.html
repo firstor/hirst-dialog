@@ -1,5 +1,22 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-dialog/paper-dialog.html">
+<link rel="import" href="../paper-button/paper-button.html">
 
+<!--
+`komed-dialog-base` renders a dialog base instance, on which other dialogs will be based.
+It contains 'X' button out of the box.
+
+### Example
+
+```html
+<komed-dialog-base
+  title="Congratulations">
+  It works!
+</komed-dialog-base>
+```
+
+@demo demo/index.html
+-->
 <dom-module id="komed-dialog-base">
   <template>
     <style>
@@ -7,7 +24,11 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+
+    <paper-dialog id="dialog" opened="{{opened}}" with-backdrop>
+      <h2 hidden$="[[!title]]"><strong>[[title]]</strong></h2>
+      <p><slot></slot></p>
+    </paper-dialog>
   </template>
 
   <script>
@@ -20,12 +41,25 @@
      * @demo demo/index.html
      */
     class KomedDialogBase extends Polymer.Element {
-      static get is() { return 'komed-dialog-base'; }
+      static get is() {
+        return 'komed-dialog-base';
+      }
+
       static get properties() {
         return {
-          prop1: {
+          /**
+           * Title of the dialog
+           */
+          title: {
             type: String,
-            value: 'komed-dialog-base'
+            value: null
+          },
+          /**
+           * True if the dialog is currently opened
+           */
+          opened: {
+            true: Boolean,
+            notify: true
           }
         };
       }
