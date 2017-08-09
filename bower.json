@@ -5,6 +5,7 @@
   "homepage": "https://github.com/first87/komed-dialog-base",
   "main": "komed-dialog-base.html",
   "dependencies": {
+    "iron-icons": "PolymerElements/iron-icons#^2.0.0",
     "polymer": "Polymer/polymer#^2.0.0",
     "paper-dialog": "PolymerElements/paper-dialog#^2.0.0",
     "paper-icon-button": "PolymerElements/paper-icon-button#^2.0.0"
