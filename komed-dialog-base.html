@@ -1,6 +1,7 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-dialog/paper-dialog.html">
-<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
 
 <!--
 `komed-dialog-base` renders a dialog base instance, on which other dialogs will be based.
@@ -27,7 +28,10 @@ It contains 'X' button out of the box.
 
     <paper-dialog id="dialog" with-backdrop>
       <h2 hidden$="[[!title]]"><strong>[[title]]</strong></h2>
-      <p><slot></slot></p>
+      <p>
+        <paper-icon-button close icon="icons:close" on-click="close"></paper-icon-button>
+        <slot></slot>
+      </p>
     </paper-dialog>
   </template>
 
@@ -82,11 +86,6 @@ It contains 'X' button out of the box.
       */
       close() {
         this.$.dialog.close();
-
-        // Remove the dialog from the DOM
-        if (this.parentNode) {
-          Polymer.dom(this.parentNode).removeChild(this);
-        }
       }
     }
 
