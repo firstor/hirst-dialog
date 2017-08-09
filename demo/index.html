@@ -20,7 +20,7 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic komed-dialog-base demo</h3>
+      <h3>Basic dialog</h3>
       <demo-snippet>
         <template>
           <komed-dialog-base
@@ -29,6 +29,22 @@
             It works!
           </komed-dialog-base>
           <paper-button onclick="basicDialog.open()" raised>Open</paper-button>
+        </template>
+      </demo-snippet>
+
+      <h3>Attach dialog to a specific element</h3>
+      <demo-snippet>
+        <template>
+          <p id="attachToThis">
+            Attach dialog to me
+          </p>
+          <komed-dialog-base
+            id="attachedDialog"
+            title="Dialog attached to a specific element"
+            attach="#attachToThis">
+            It works!
+          </komed-dialog-base>
+          <paper-button onclick="attachedDialog.open()" raised>Open</paper-button>
         </template>
       </demo-snippet>
     </div>
