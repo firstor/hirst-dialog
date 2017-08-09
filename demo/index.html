@@ -10,6 +10,7 @@
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../paper-button/paper-button.html">
     <link rel="import" href="../komed-dialog-base.html">
 
     <custom-style>
@@ -22,7 +23,12 @@
       <h3>Basic komed-dialog-base demo</h3>
       <demo-snippet>
         <template>
-          <komed-dialog-base></komed-dialog-base>
+          <komed-dialog-base
+            id="basicDialog"
+            title="Basic dialog">
+            It works!
+          </komed-dialog-base>
+          <paper-button on-tap="basicDialog.open()" raised>Open</paper-button>
         </template>
       </demo-snippet>
     </div>
