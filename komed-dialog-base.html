@@ -98,16 +98,34 @@ Custom property | Description | Default
           title: {
             type: String,
             value: null
+          },
+
+          /**
+           * Parent element, where the dialog is attached to, body by default
+           */
+          attach: {
+            type: String,
+            value: null,
+            reflectToAttribute: true
           }
         };
       }
 
       /**
-      * Opens the dialog
+      * Open the dialog
       */
       open() {
-        // Attach dialog to the body to ensure it's on top of all existing overlays
-        Polymer.dom(document.body).appendChild(this);
+        // Determine where the dialog is attached to
+        var attachTo = null;
+        if (this.attach) {
+          attachTo = document.querySelector(this.attach);
+        }
+        if (!attachTo) {
+          attachTo = document.body;
+        }
+
+        // Attach dialog, to ensure it's on top of all existing overlays
+        Polymer.dom(attachTo).appendChild(this);
 
         // Wait until dialog is added to the DOM (required for Safari)
         setTimeout(function() {
@@ -116,7 +134,7 @@ Custom property | Description | Default
       }
 
       /**
-      * Closes the alert dialog
+      * Close the dialog
       */
       close() {
         this.$.dialog.close();
