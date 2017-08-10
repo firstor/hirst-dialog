@@ -37,7 +37,7 @@ Custom property | Description | Default
 <dom-module id="komed-dialog-base">
   <template>
     <style>
-      :host {
+      paper-dialog {
         --paper-dialog: {
           width: 100vw;
           height: 100vh;
@@ -49,6 +49,7 @@ Custom property | Description | Default
           max-height: var(--komed-dialog-max-height, 600px);
         };
         --paper-dialog-title: {
+          font-weight: bold;
           @apply --komed-dialog-title;
           color: var(--komed-dialog-title-color);
         };
@@ -68,7 +69,7 @@ Custom property | Description | Default
     </style>
 
     <paper-dialog id="dialog" with-backdrop>
-      <h2 hidden$="[[!title]]"><strong>[[title]]</strong></h2>
+      <h2 hidden$="[[!title]]">[[title]]</h2>
       <p>
         <paper-icon-button close icon="icons:close" on-click="close"></paper-icon-button>
         <slot></slot>
