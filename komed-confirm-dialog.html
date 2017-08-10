@@ -25,6 +25,19 @@ It gives `confirm` and `dismiss` button as default.
       :host {
         display: block;
       }
+
+      #confirmButtons {
+        margin: auto;
+        margin-top: 5%;
+        @apply --komed-dialog-buttons;
+      }
+
+      #confirmButtons > paper-button {
+        text-transform: none;
+        @apply --komed-dialog-button;
+        color: var(--komed-dialog-button-color, --komed-dialog-color);
+        width: var(--komed-dialog-button-width, 45%);
+      }
     </style>
 
     <komed-dialog-base id="dialogBase" title="{{title}}" attach="{{attach}}">
