@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>komed-action-dialog test</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../komed-action-dialog.html">
+  </head>
+  <body>
+
+    <test-fixture id="BasicDialogFixture">
+      <template>
+        <komed-action-dialog title="Congratulations"></komed-action-dialog>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="DialogAttachFixture">
+      <template>
+        <div id="container">
+          <p id="attachToThis">Attach dialog to me</p>
+          <komed-action-dialog id="attachDialog" title="Congratulations" attach="#attachToThis"></komed-action-dialog>
+        </div>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('komed-action-dialog', function() {
+
+        test('opening basic dialog', function() {
+          var dialog = fixture('BasicDialogFixture').shadowRoot.querySelector('#dialogBase').shadowRoot.querySelector('#dialog');
+          var dialogTitle = dialog.querySelector('h2');
+          var dialogClose = dialog.querySelector('[close]');
+          assert.equal(dialogTitle.innerText, 'Congratulations');
+        });
+
+        test('attaching dialog to a specific element', function() {
+          var container = fixture('DialogAttachFixture');
+          var dialog = container.querySelector('#attachDialog');
+          var attachTo = container.querySelector('#attachToThis');
+          dialog.open();
+          assert.equal(dialog.parentNode.id, 'attachToThis');
+          assert.equal(dialog.parentNode.tagName, attachTo.tagName);
+        });
+
+      });
+    </script>
+
+  </body>
+</html>
