@@ -1,21 +1,52 @@
-# \<komed-dialog-base\>
+# komed-dialog-base
 
-A Polymer-based web component to implement dialog base for Komed-Health
+`komed-dialog-base` is a Polymer-based web component to implement a dialog base for Komed-Health.
 
-## Install the Polymer-CLI
+## How to use
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
+To install the element:
+```
+$ bower install komed-dialog-base
+```
 
-## Viewing Your Element
+```html
+<komed-dialog-base
+    id="dialog"
+    title="Congratulations">
+    It works!
+</komed-dialog-base>
+```
 
+## Development
+
+### Prerequisites
+
+[Polymer CLI](https://www.npmjs.com/package/polymer-cli) and [Bower](https://www.npmjs.com/package/bower) should be installed globally.
+```
+$ npm install polymer-cli --global
+$ npm install bower --global
+```
+
+Then install all components required in the project:
+```
+$ bower install
+```
+
+### Viewing element
+
+To view reusable component on the browser:
 ```
 $ polymer serve
 ```
 
-## Running Tests
+Then open the browser and go to the url the terminal or console implies, something like this:
+```
+http://localhost:3030/components/komed-dialog-base/
+```
+
+### Running Tests
 
 ```
 $ polymer test
 ```
 
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
