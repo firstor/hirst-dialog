@@ -1,7 +1,6 @@
 <link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../paper-dialog/paper-dialog.html">
-<link rel="import" href="../iron-icons/iron-icons.html">
-<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="komed-dialog-base.html">
 
 <!--
 `komed-confirm-dialog` renders a confirm dialog instance based on `komed-dialog-base`.
@@ -30,6 +29,10 @@ It gives `confirm` and `dismiss` button as default.
 
     <komed-dialog-base id="dialogBase" title="{{title}}" attach="{{attach}}">
       <slot></slot>
+      <div id="confirmButtons">
+        <paper-button id="confirmButton" raised on-click="confirm">[[confirmTitle]]</paper-button>
+        <paper-button id="dismissButton" raised on-click="dismiss" hidden$="[[!showDismiss]]">[[dismissTitle]]</paper-button>
+      </div>
     </komed-dialog-base>
   </template>
 
@@ -63,22 +66,60 @@ It gives `confirm` and `dismiss` button as default.
           attach: {
             type: String,
             value: null
+          },
+
+          /**
+           * Title of the confirm button
+           */
+          confirmTitle: {
+            type: String,
+            value: 'Confirm'
+          },
+
+          /**
+           * Title of the dismiss button
+           */
+          dismissTitle: {
+            type: String,
+            value: 'Dismiss'
+          },
+
+          /**
+           * Indicates whether dismiss button is shown or not
+           */
+          showDismiss: {
+            type: Boolean,
+            value: null
           }
         };
       }
 
       /**
-      * Open the dialog
-      */
+       * Open the dialog
+       */
       open() {
         this.$.dialogBase.open(this);
       }
 
       /**
-      * Close the dialog
-      */
+       * Close the dialog
+       */
       close() {
         this.$.dialogBase.close();
+      }
+
+      /**
+       * Confirm and close the dialog
+       */
+      confirm() {
+        this.close();
+      }
+
+      /**
+       * Dismiss and close the dialog
+       */
+      dismiss() {
+        this.close();
       }
     }
 
