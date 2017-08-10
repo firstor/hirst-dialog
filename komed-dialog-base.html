@@ -114,8 +114,11 @@ Custom property | Description | Default
 
       /**
       * Open the dialog
+      *
+      * @handle {Object} optional dialog handle, typically given as the parent element
+      *    of this element in order to attach the proper instance to the DOM tree
       */
-      open() {
+      open(handle) {
         // Determine where the dialog is attached to
         var attachTo = null;
         if (this.attach) {
@@ -126,7 +129,7 @@ Custom property | Description | Default
         }
 
         // Attach dialog, to ensure it's on top of all existing overlays
-        Polymer.dom(attachTo).appendChild(this);
+        Polymer.dom(attachTo).appendChild(handle ? handle : this);
 
         // Wait until dialog is added to the DOM (required for Safari)
         setTimeout(function() {
