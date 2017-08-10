@@ -1,20 +1,21 @@
-# komed-dialog-base
+# komed-dialog
 
-`komed-dialog-base` is a Polymer-based web component to implement a dialog base for Komed-Health.
+`komed-dialog` is a Polymer-based web component to implement various dialogs for Komed-Health.
 
 ## How to use
 
 To install the element:
 ```
-$ bower install komed-dialog-base
+$ bower install komed-dialog
 ```
 
+### komed-action-dialog
 ```html
-<komed-dialog-base
+<komed-action-dialog
     id="dialog"
     title="Congratulations">
     It works!
-</komed-dialog-base>
+</komed-action-dialog>
 ```
 
 ## Development
@@ -41,7 +42,7 @@ $ polymer serve
 
 Then open the browser and go to the url the terminal or console implies, something like this:
 ```
-http://localhost:3030/components/komed-dialog-base/
+http://localhost:3030/components/komed-dialog/
 ```
 
 ### Running Tests
