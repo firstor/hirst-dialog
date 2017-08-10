@@ -1,0 +1,82 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="komed-dialog-base.html">
+
+<!--
+`komed-action-dialog` renders an action dialog instance based on `komed-dialog-base`.
+
+### Example
+
+```html
+<komed-action-dialog
+  title="Congratulations">
+  It works!
+</komed-action-dialog>
+```
+
+@demo demo/index.html
+-->
+<dom-module id="komed-action-dialog">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <komed-dialog-base id="dialogBase" title="{{title}}" attach="{{attach}}">
+      <slot></slot>
+    </komed-dialog-base>
+  </template>
+
+  <script>
+    /**
+     * `komed-action-dialog`
+     * komed-action-dialog
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class KomedActionDialog extends Polymer.Element {
+      static get is() {
+        return 'komed-action-dialog';
+      }
+
+      static get properties() {
+        return {
+          /**
+           * Title of the dialog
+           */
+          title: {
+            type: String,
+            value: null
+          },
+
+          /**
+           * Parent element, where the dialog is attached to, body by default
+           */
+          attach: {
+            type: String,
+            value: null
+          }
+        };
+      }
+
+      /**
+      * Open the dialog
+      */
+      open() {
+        this.$.dialogBase.open();
+      }
+
+      /**
+      * Close the dialog
+      */
+      close() {
+        this.$.dialogBase.close();
+      }
+    }
+
+    window.customElements.define(KomedActionDialog.is, KomedActionDialog);
+  </script>
+</dom-module>
