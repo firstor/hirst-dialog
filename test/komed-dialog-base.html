@@ -19,6 +19,15 @@
       </template>
     </test-fixture>
 
+    <test-fixture id="DialogAttachFixture">
+      <template>
+        <div id="container">
+          <p id="attachToThis">Attach dialog to me</p>
+          <komed-dialog-base id="attachDialog" title="Congratulations" attach="#attachToThis"></komed-dialog-base>
+        </div>
+      </template>
+    </test-fixture>
+
     <script>
       suite('komed-dialog-base', function() {
 
@@ -27,6 +36,15 @@
           var dialogTitle = dialog.querySelector('h2');
           var dialogClose = dialog.querySelector('[close]');
           assert.equal(dialogTitle.innerText, 'Congratulations');
+        });
+
+        test('attaching dialog to a specific element', function() {
+          var container = fixture('DialogAttachFixture');
+          var dialog = container.querySelector('#attachDialog');
+          var attachTo = container.querySelector('#attachToThis');
+          dialog.open();
+          assert.equal(dialog.parentNode.id, 'attachToThis');
+          assert.equal(dialog.parentNode.tagName, attachTo.tagName);
         });
 
       });
