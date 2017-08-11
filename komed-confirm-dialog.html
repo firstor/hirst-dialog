@@ -125,6 +125,7 @@ It gives `confirm` and `dismiss` button as default.
        * Confirm and close the dialog
        */
       confirm() {
+        this.dispatchEvent(new CustomEvent('confirm'));
         this.close();
       }
 
@@ -132,6 +133,7 @@ It gives `confirm` and `dismiss` button as default.
        * Dismiss and close the dialog
        */
       dismiss() {
+        this.dispatchEvent(new CustomEvent('dismiss'));
         this.close();
       }
     }
