@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>komed-confirm-dialog test</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../komed-confirm-dialog.html">
+  </head>
+  <body>
+
+    <test-fixture id="BasicDialogFixture">
+      <template>
+        <komed-confirm-dialog
+          title="Congratulations"
+          title="Basic confirm dialog"
+          confirm-title="CONFIRM!"
+          dismiss-title="DISMISS!"
+          show-dismiss>
+        </komed-confirm-dialog>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="DialogAttachFixture">
+      <template>
+        <div id="container">
+          <p id="attachToThis">Attach dialog to me</p>
+          <komed-confirm-dialog id="attachDialog" title="Congratulations" attach="#attachToThis"></komed-confirm-dialog>
+        </div>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('komed-confirm-dialog', function() {
+
+        test('opening basic dialog', function() {
+          var dialog = fixture('BasicDialogFixture').shadowRoot.querySelector('#dialogBase');
+          var dialogTitle = dialog.shadowRoot.querySelector('#dialog').querySelector('h2');
+          var confirmButton = dialog.querySelector('#confirmButton');
+          var dismissButton = dialog.querySelector('#dismissButton');
+          assert.equal(dialogTitle.innerText, 'Congratulations');
+          assert.equal(confirmButton.innerText, 'CONFIRM!');
+          assert.equal(dismissButton.innerText, 'DISMISS!');
+        });
+
+        test('attaching dialog to a specific element', function() {
+          var container = fixture('DialogAttachFixture');
+          var dialog = container.querySelector('#attachDialog');
+          var attachTo = container.querySelector('#attachToThis');
+          dialog.open();
+          assert.equal(dialog.parentNode.id, 'attachToThis');
+          assert.equal(dialog.parentNode.tagName, attachTo.tagName);
+        });
+
+      });
+    </script>
+
+  </body>
+</html>
