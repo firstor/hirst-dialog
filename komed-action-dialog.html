@@ -23,7 +23,7 @@
       }
     </style>
 
-    <komed-dialog-base id="dialogBase" title="{{title}}" attach="{{attach}}">
+    <komed-dialog-base id="dialogBase" title="{{title}}" opened="{{opened}}" attach="{{attach}}">
       <slot></slot>
     </komed-dialog-base>
   </template>
@@ -50,6 +50,16 @@
           title: {
             type: String,
             value: null
+          },
+
+          /**
+           * @readonly
+           * True if dialog is opened
+           */
+          opened: {
+            type: Boolean,
+            notify: true,
+            readOnly: true
           },
 
           /**
