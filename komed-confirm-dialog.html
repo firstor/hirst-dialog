@@ -44,7 +44,7 @@ It gives `confirm` and `dismiss` button as default.
       <slot></slot>
       <div id="confirmButtons">
         <paper-button id="confirmButton" raised on-click="confirm">[[confirmTitle]]</paper-button>
-        <paper-button id="dismissButton" raised on-click="dismiss" hidden$="[[!showDismiss]]">[[dismissTitle]]</paper-button>
+        <paper-button id="dismissButton" raised on-click="dismiss" hidden$="[[hideDismiss]]">[[dismissTitle]]</paper-button>
       </div>
     </komed-dialog-base>
   </template>
@@ -98,9 +98,9 @@ It gives `confirm` and `dismiss` button as default.
           },
 
           /**
-           * Indicates whether dismiss button is shown or not
+           * Indicates whether dismiss button is hidden or not
            */
-          showDismiss: {
+          hideDismiss: {
             type: Boolean,
             value: null
           }
