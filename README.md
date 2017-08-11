@@ -24,8 +24,7 @@ $ bower install komed-dialog
     id="dialog"
     title="Congratulations"
     confirm-title="CONFIRM"
-    dismiss-title="DISMISS"
-    show-dismiss>
+    dismiss-title="DISMISS">
     It works!
 </komed-confirm-dialog>
 ```
