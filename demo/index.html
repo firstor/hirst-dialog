@@ -16,27 +16,11 @@
   <custom-style>
     <style is="custom-style" include="demo-pages-shared-styles">
       /**
-        * These styles will be applied to all `komed-dialog-base` elements
+        * These styles will be applied to all komed-dialog instances
         * but may be overridden by styling with `komed-dialog-base` selector
         * HIGHLY RECOMMENDED to define styles here for make them fully work on IE+Edge
         */
       html {
-        --komed-dialog-title-color: red;
-      }
-
-      /**
-        * These styles might not be applied to `komed-dialog-base` elements
-        * which are attached to the document body
-        */
-      demo-snippet {
-        --komed-dialog-title-color: blue;
-      }
-
-      /**
-        * These styles will be applied to all `komed-dialog-base` elements
-        * at the highest priority
-        */
-      komed-action-dialog {
         --komed-dialog: {
           padding: 10px;
           overflow: scroll;
@@ -55,6 +39,14 @@
         };
         --komed-dialog-close-color: green;
         --komed-dialog-close-size: 48px;
+      }
+
+      /**
+        * These styles might not be applied to komed-dialog instances
+        * which are attached to the document body
+        */
+      demo-snippet {
+        --komed-dialog-title-color: blue;
       }
 
       paper-button {
@@ -76,6 +68,30 @@
         It works!
       </komed-action-dialog>
       <paper-button onclick="basicActionDialog.open()" raised>Open</paper-button>
+    </template>
+  </demo-snippet>
+
+  <h3>Basic confirm dialog</h3>
+  <demo-snippet>
+    <template>
+      <komed-confirm-dialog
+        id="basicConfirmDialog"
+        title="Basic confirm dialog"
+        confirm-title="CONFIRM"
+        dismiss-title="DISMISS"
+        show-dismiss>
+        It works!
+      </komed-confirm-dialog>
+      <paper-button onclick="basicConfirmDialog.open()" raised>Open</paper-button>
+      <script>
+        var dialog = document.querySelector('#basicConfirmDialog');
+        dialog.addEventListener('confirm', function (e) {
+          alert('You just chose confirm');
+        });
+        dialog.addEventListener('dismiss', function (e) {
+          alert('You just chose dismiss');
+        });
+      </script>
     </template>
   </demo-snippet>
 
