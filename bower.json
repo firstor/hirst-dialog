@@ -1,7 +1,7 @@
 {
   "name": "komed-dialog",
   "description": "Polymer-based web component to implement various dialogs for Komed-Health",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/first87/komed-dialog",
   "main": "komed-dialog.html",
   "dependencies": {
