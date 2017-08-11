@@ -72,7 +72,7 @@ Custom property | Description | Default
       }
     </style>
 
-    <paper-dialog id="dialog" with-backdrop>
+    <paper-dialog id="dialog" opened="{{opened}}" with-backdrop>
       <h2 hidden$="[[!title]]">[[title]]</h2>
       <p>
         <paper-icon-button close icon="icons:close" on-click="close"></paper-icon-button>
@@ -103,6 +103,16 @@ Custom property | Description | Default
           title: {
             type: String,
             value: null
+          },
+
+          /**
+           * @readonly
+           * True if dialog is opened
+           */
+          opened: {
+            type: Boolean,
+            notify: true,
+            readOnly: true
           },
 
           /**
