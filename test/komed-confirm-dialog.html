@@ -8,8 +8,10 @@
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../test-fixture/test-fixture-mocha.js"></script>
 
     <link rel="import" href="../komed-confirm-dialog.html">
+    <link rel="import" href="../../test-fixture/test-fixture.html">
   </head>
   <body>
 
@@ -42,9 +44,10 @@
           var dialogTitle = dialog.shadowRoot.querySelector('#dialog').querySelector('h2');
           var confirmButton = dialog.querySelector('#confirmButton');
           var dismissButton = dialog.querySelector('#dismissButton');
-          assert.equal(dialogTitle.innerText, 'Congratulations');
-          assert.equal(confirmButton.innerText, 'CONFIRM!');
-          assert.equal(dismissButton.innerText, 'DISMISS!');
+          expect(dialogTitle.textContent).to.be.eql('Congratulations');
+          expect(dismissButton).to.exist;
+          expect(confirmButton.textContent).to.be.equal('CONFIRM!');
+          expect(dismissButton.textContent).to.be.equal('DISMISS!');
         });
 
         test('attaching dialog to a specific element', function() {
@@ -52,8 +55,9 @@
           var dialog = container.querySelector('#attachDialog');
           var attachTo = container.querySelector('#attachToThis');
           dialog.open();
-          assert.equal(dialog.parentNode.id, 'attachToThis');
-          assert.equal(dialog.parentNode.tagName, attachTo.tagName);
+          expect(dialog.parentNode.id).to.be.eql('attachToThis');
+          expect(dialog.parentNode.tagName).to.be.eql(attachTo.tagName);
+          dialog.close();
         });
 
       });
