@@ -8,8 +8,10 @@
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../test-fixture/test-fixture-mocha.js"></script>
 
     <link rel="import" href="../komed-dialog-base.html">
+    <link rel="import" href="../../test-fixture/test-fixture.html">
   </head>
   <body>
 
@@ -35,7 +37,8 @@
           var dialog = fixture('BasicDialogFixture').shadowRoot.querySelector('#dialog');
           var dialogTitle = dialog.querySelector('h2');
           var dialogClose = dialog.querySelector('[close]');
-          assert.equal(dialogTitle.innerText, 'Congratulations');
+          expect(dialogTitle.textContent).to.be.eql('Congratulations');
+          expect(dialogClose).to.exist;
         });
 
         test('attaching dialog to a specific element', function() {
@@ -43,8 +46,9 @@
           var dialog = container.querySelector('#attachDialog');
           var attachTo = container.querySelector('#attachToThis');
           dialog.open();
-          assert.equal(dialog.parentNode.id, 'attachToThis');
-          assert.equal(dialog.parentNode.tagName, attachTo.tagName);
+          expect(dialog.parentNode.id).to.be.eql('attachToThis');
+          expect(dialog.parentNode.tagName).to.be.eql(attachTo.tagName);
+          dialog.close();
         });
 
       });
