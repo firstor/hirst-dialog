@@ -18,6 +18,18 @@ $ bower install komed-dialog
 </komed-action-dialog>
 ```
 
+### komed-confirm-dialog
+```html
+<komed-confirm-dialog
+    id="dialog"
+    title="Congratulations"
+    confirm-title="CONFIRM"
+    dismiss-title="DISMISS"
+    show-dismiss>
+    It works!
+</komed-confirm-dialog>
+```
+
 ## Development
 
 ### Prerequisites
