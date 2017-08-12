@@ -59,6 +59,27 @@
           dialog.close();
         });
 
+        test('verifying opened property', function(done) {
+          var container = fixture('DialogAttachFixture');
+          var dialog = container.querySelector('#attachDialog');
+
+          expect(dialog.opened).to.be.eql(false);
+
+          // Open dialog and then verify opened
+          dialog.open();
+          setTimeout(function() {
+            expect(dialog.opened).to.be.eql(true);
+
+            // Close dialog and then verify opened
+            dialog.close();
+            setTimeout(function() {
+              expect(dialog.opened).to.be.eql(false);
+
+              done();
+            }, 1000);
+          }, 1000);
+        });
+
       });
     </script>
 
