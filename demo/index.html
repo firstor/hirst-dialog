@@ -57,6 +57,10 @@
         width: 120px;
       }
 
+      p {
+        margin-bottom: 20px;
+      }
+
       .dialog-opened {
         margin-left: 30px;
       }
@@ -71,11 +75,17 @@
   <demo-snippet>
     <template>
       <komed-action-dialog
-        id="basicActionDialog"
+        id="actionDialog"
         title="Basic action dialog">
         It works!
       </komed-action-dialog>
-      <paper-button onclick="basicActionDialog.open()" raised>Open</paper-button>
+      <paper-button onclick="actionDialog.open()" raised>Open</paper-button>
+      <span id="actionDialogOpened" class="dialog-opened"></span>
+      <script>
+        actionDialog.addEventListener('opened-changed', function (e) {
+          actionDialogOpened.innerText = e.detail.value ? 'Dialog opened' : 'Dialog closed';
+        });
+      </script>
     </template>
   </demo-snippet>
 
@@ -118,6 +128,12 @@
         It works!
       </komed-action-dialog>
       <paper-button onclick="attachedDialog.open()" raised>Open</paper-button>
+      <span id="attachedDialogOpened" class="dialog-opened"></span>
+      <script>
+        attachedDialog.addEventListener('opened-changed', function (e) {
+          attachedDialogOpened.innerText = e.detail.value ? 'Dialog opened' : 'Dialog closed';
+        });
+      </script>
     </template>
   </demo-snippet>
 
