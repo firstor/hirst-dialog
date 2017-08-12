@@ -28,7 +28,7 @@
         };
         --komed-dialog-color: #006100;
         --komed-dialog-max-width: 720px;
-        --komed-dialog-max-height: 480px;
+        --komed-dialog-max-height: 360px;
         --komed-dialog-title: {
           font-size: 1.5em;
           line-height: 1.5em;
@@ -55,6 +55,10 @@
 
       paper-button {
         width: 120px;
+      }
+
+      .dialog-opened {
+        margin-left: 30px;
       }
     </style>
   </custom-style>
@@ -86,7 +90,7 @@
         It works!
       </komed-confirm-dialog>
       <paper-button onclick="confirmDialog.open()" raised>Open</paper-button>
-      <span id="dialogOpened"></span>
+      <span id="confirmDialogOpened" class="dialog-opened"></span>
       <script>
         confirmDialog.addEventListener('confirm', function (e) {
           alert('You just chose confirm');
@@ -95,14 +99,9 @@
           alert('You just chose dismiss');
         });
         confirmDialog.addEventListener('opened-changed', function (e) {
-          dialogOpened.innerText = 'Dialog ' + (e.detail.value ? 'opened' : 'closed');
+          confirmDialogOpened.innerText = e.detail.value ? 'Dialog opened' : 'Dialog closed';
         });
       </script>
-      <style>
-        #dialogOpened {
-          margin-left: 30px;
-        }
-      </style>
     </template>
   </demo-snippet>
 
