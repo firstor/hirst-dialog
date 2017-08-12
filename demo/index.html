@@ -79,22 +79,30 @@
   <demo-snippet>
     <template>
       <komed-confirm-dialog
-        id="basicConfirmDialog"
+        id="confirmDialog"
         title="Basic confirm dialog"
         confirm-title="CONFIRM"
         dismiss-title="DISMISS">
         It works!
       </komed-confirm-dialog>
-      <paper-button onclick="basicConfirmDialog.open()" raised>Open</paper-button>
+      <paper-button onclick="confirmDialog.open()" raised>Open</paper-button>
+      <span id="dialogOpened"></span>
       <script>
-        var dialog = document.querySelector('#basicConfirmDialog');
-        dialog.addEventListener('confirm', function (e) {
+        confirmDialog.addEventListener('confirm', function (e) {
           alert('You just chose confirm');
         });
-        dialog.addEventListener('dismiss', function (e) {
+        confirmDialog.addEventListener('dismiss', function (e) {
           alert('You just chose dismiss');
         });
+        confirmDialog.addEventListener('opened-changed', function (e) {
+          dialogOpened.innerText = 'Dialog ' + (e.detail.value ? 'opened' : 'closed');
+        });
       </script>
+      <style>
+        #dialogOpened {
+          margin-left: 30px;
+        }
+      </style>
     </template>
   </demo-snippet>
 
