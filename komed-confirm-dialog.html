@@ -78,7 +78,8 @@ It gives `confirm` and `dismiss` button as default.
            */
           opened: {
             type: Boolean,
-            notify: true
+            notify: true,
+            observer: '_openedChanged'
           },
 
           /**
@@ -113,6 +114,14 @@ It gives `confirm` and `dismiss` button as default.
             value: null
           }
         };
+      }
+
+      _openedChanged(newValue, oldValue) {
+        if (newValue) {
+          this.open();
+        } else {
+          this.close();
+        }
       }
 
       /**
