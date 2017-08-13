@@ -79,7 +79,7 @@
         title="Basic action dialog">
         It works!
       </komed-action-dialog>
-      <paper-button onclick="actionDialog.open()" raised>Open</paper-button>
+      <paper-button onclick="actionDialog.opened=true" raised>Open</paper-button>
       <span id="actionDialogOpened" class="dialog-opened"></span>
       <script>
         actionDialog.addEventListener('opened-changed', function (e) {
@@ -99,7 +99,7 @@
         dismiss-title="DISMISS">
         It works!
       </komed-confirm-dialog>
-      <paper-button onclick="confirmDialog.open()" raised>Open</paper-button>
+      <paper-button onclick="confirmDialog.opened=true" raised>Open</paper-button>
       <span id="confirmDialogOpened" class="dialog-opened"></span>
       <script>
         confirmDialog.addEventListener('confirm', function (e) {
