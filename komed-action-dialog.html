@@ -57,7 +57,8 @@
            */
           opened: {
             type: Boolean,
-            notify: true
+            notify: true,
+            observer: '_openedChanged'
           },
 
           /**
@@ -70,16 +71,24 @@
         };
       }
 
+      _openedChanged(newValue, oldValue) {
+        if (newValue) {
+          this.open();
+        } else {
+          this.close();
+        }
+      }
+
       /**
-      * Open the dialog
-      */
+       * Open the dialog
+       */
       open() {
         this.$.dialogBase.open(this);
       }
 
       /**
-      * Close the dialog
-      */
+       * Close the dialog
+       */
       close() {
         this.$.dialogBase.close();
       }
