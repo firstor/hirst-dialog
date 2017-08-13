@@ -35,6 +35,18 @@
       </template>
     </test-fixture>
 
+    <test-fixture id="DialogOpenedFixture">
+      <template>
+        <div id="container">
+          <div>
+            <div>
+              <komed-confirm-dialog title="Congratulations"></komed-confirm-dialog>
+            </div>
+          </div>
+        </div>
+      </template>
+    </test-fixture>
+
     <script>
       suite('komed-confirm-dialog', function() {
 
@@ -77,6 +89,19 @@
 
               done();
             }, 1000);
+          }, 1000);
+        });
+
+        test('opening dialog with opened property', function(done) {
+          var container = fixture('DialogOpenedFixture');
+          var dialog = container.querySelector('komed-confirm-dialog');
+
+          // Open the dialog
+          dialog.opened = true;
+          setTimeout(function() {
+            // opened dialog should be attached to the document body
+            expect(dialog.parentNode.tagName.toLowerCase()).to.be.eql('body');
+            done();
           }, 1000);
         });
 
