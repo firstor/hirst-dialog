@@ -4,53 +4,53 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-  <title>komed-dialog demo</title>
+  <title>hirst-dialog demo</title>
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
   <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
   <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
   <link rel="import" href="../../paper-button/paper-button.html">
-  <link rel="import" href="../komed-dialog.html">
+  <link rel="import" href="../hirst-dialog.html">
 
   <custom-style>
     <style is="custom-style" include="demo-pages-shared-styles">
       /**
-        * These styles will be applied to all komed-dialog instances
-        * but may be overridden by styling with `komed-dialog-base` selector
+        * These styles will be applied to all hirst-dialog instances
+        * but may be overridden by styling with `hirst-dialog-base` selector
         * HIGHLY RECOMMENDED to define styles here for make them fully work on IE+Edge
         */
       html {
-        --komed-dialog: {
+        --hirst-dialog: {
           padding: 10px;
           overflow: scroll;
           font-size: 1.2em;
         };
-        --komed-dialog-color: #006100;
-        --komed-dialog-max-width: 720px;
-        --komed-dialog-max-height: 360px;
-        --komed-dialog-title: {
+        --hirst-dialog-color: #006100;
+        --hirst-dialog-max-width: 720px;
+        --hirst-dialog-max-height: 360px;
+        --hirst-dialog-title: {
           font-size: 1.5em;
           line-height: 1.5em;
         };
-        --komed-dialog-title-color: green;
-        --komed-dialog-close: {
+        --hirst-dialog-title-color: green;
+        --hirst-dialog-close: {
           margin: 10px;
         };
-        --komed-dialog-close-color: green;
-        --komed-dialog-close-size: 48px;
+        --hirst-dialog-close-color: green;
+        --hirst-dialog-close-size: 48px;
 
         /** confirm dialog */
-        --komed-dialog-buttons: {
+        --hirst-dialog-buttons: {
           margin: 64px auto 16px auto;
         };
-        --komed-dialog-button: {
+        --hirst-dialog-button: {
           text-transform: none;
           border-style: solid;
           border-width: 0.12em;
         };
-        --komed-dialog-button-color: green;
-        --komed-dialog-button-width: 48%;
+        --hirst-dialog-button-color: green;
+        --hirst-dialog-button-width: 48%;
       }
 
       paper-button {
@@ -74,11 +74,11 @@
   <h3>Basic action dialog</h3>
   <demo-snippet>
     <template>
-      <komed-action-dialog
+      <hirst-action-dialog
         id="actionDialog"
         title="Basic action dialog">
         It works!
-      </komed-action-dialog>
+      </hirst-action-dialog>
       <paper-button onclick="actionDialog.opened=true" raised>Open</paper-button>
       <span id="actionDialogOpened" class="dialog-opened"></span>
       <script>
@@ -92,13 +92,13 @@
   <h3>Basic confirm dialog</h3>
   <demo-snippet>
     <template>
-      <komed-confirm-dialog
+      <hirst-confirm-dialog
         id="confirmDialog"
         title="Basic confirm dialog"
         confirm-title="CONFIRM"
         dismiss-title="DISMISS">
         It works!
-      </komed-confirm-dialog>
+      </hirst-confirm-dialog>
       <paper-button onclick="confirmDialog.opened=true" raised>Open</paper-button>
       <span id="confirmDialogOpened" class="dialog-opened"></span>
       <script>
@@ -121,12 +121,12 @@
       <p id="attachToThis">
         Attach dialog to me
       </p>
-      <komed-action-dialog
+      <hirst-action-dialog
         id="attachedDialog"
         title="An action dialog attached to a specific element"
         attach="#attachToThis">
         It works!
-      </komed-action-dialog>
+      </hirst-action-dialog>
       <paper-button onclick="attachedDialog.open()" raised>Open</paper-button>
       <span id="attachedDialogOpened" class="dialog-opened"></span>
       <script>

@@ -4,20 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>komed-dialog-base test</title>
+    <title>hirst-dialog-base test</title>
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
     <script src="../../test-fixture/test-fixture-mocha.js"></script>
 
-    <link rel="import" href="../komed-dialog-base.html">
+    <link rel="import" href="../hirst-dialog-base.html">
     <link rel="import" href="../../test-fixture/test-fixture.html">
   </head>
   <body>
 
     <test-fixture id="BasicDialogFixture">
       <template>
-        <komed-dialog-base title="Congratulations"></komed-dialog-base>
+        <hirst-dialog-base title="Congratulations"></hirst-dialog-base>
       </template>
     </test-fixture>
 
@@ -25,13 +25,13 @@
       <template>
         <div id="container">
           <p id="attachToThis">Attach dialog to me</p>
-          <komed-dialog-base id="attachDialog" title="Congratulations" attach="#attachToThis"></komed-dialog-base>
+          <hirst-dialog-base id="attachDialog" title="Congratulations" attach="#attachToThis"></hirst-dialog-base>
         </div>
       </template>
     </test-fixture>
 
     <script>
-      suite('komed-dialog-base', function() {
+      suite('hirst-dialog-base', function() {
 
         test('opening basic dialog', function() {
           var dialog = fixture('BasicDialogFixture').shadowRoot.querySelector('#dialog');

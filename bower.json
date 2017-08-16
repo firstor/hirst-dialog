@@ -1,9 +1,9 @@
 {
-  "name": "komed-dialog",
-  "description": "Polymer-based web component to implement various dialogs for Komed-Health",
+  "name": "hirst-dialog",
+  "description": "Polymer-based web component to implement web dialogs",
   "version": "0.0.6",
-  "homepage": "https://github.com/first87/komed-dialog",
-  "main": "komed-dialog.html",
+  "homepage": "https://github.com/first87/hirst-dialog",
+  "main": "hirst-dialog.html",
   "dependencies": {
     "iron-icons": "PolymerElements/iron-icons#^2.0.0",
     "polymer": "Polymer/polymer#^2.0.0",

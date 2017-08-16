@@ -1,21 +1,21 @@
 <link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="komed-dialog-base.html">
+<link rel="import" href="hirst-dialog-base.html">
 
 <!--
-`komed-action-dialog` renders an action dialog instance based on `komed-dialog-base`.
+`hirst-action-dialog` renders an action dialog instance based on `hirst-dialog-base`.
 
 ### Example
 
 ```html
-<komed-action-dialog
+<hirst-action-dialog
   title="Congratulations">
   It works!
-</komed-action-dialog>
+</hirst-action-dialog>
 ```
 
 @demo demo/index.html
 -->
-<dom-module id="komed-action-dialog">
+<dom-module id="hirst-action-dialog">
   <template>
     <style>
       :host {
@@ -23,23 +23,23 @@
       }
     </style>
 
-    <komed-dialog-base id="dialogBase" title="{{title}}" opened="{{opened}}" attach="{{attach}}">
+    <hirst-dialog-base id="dialogBase" title="{{title}}" opened="{{opened}}" attach="{{attach}}">
       <slot></slot>
-    </komed-dialog-base>
+    </hirst-dialog-base>
   </template>
 
   <script>
     /**
-     * `komed-action-dialog`
-     * komed-action-dialog
+     * `hirst-action-dialog`
+     * hirst-action-dialog
      *
      * @customElement
      * @polymer
      * @demo demo/index.html
      */
-    class KomedActionDialog extends Polymer.Element {
+    class HirstActionDialog extends Polymer.Element {
       static get is() {
-        return 'komed-action-dialog';
+        return 'hirst-action-dialog';
       }
 
       static get properties() {
@@ -94,6 +94,6 @@
       }
     }
 
-    window.customElements.define(KomedActionDialog.is, KomedActionDialog);
+    window.customElements.define(HirstActionDialog.is, HirstActionDialog);
   </script>
 </dom-module>

@@ -4,25 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>komed-confirm-dialog test</title>
+    <title>hirst-action-dialog test</title>
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
     <script src="../../test-fixture/test-fixture-mocha.js"></script>
 
-    <link rel="import" href="../komed-confirm-dialog.html">
+    <link rel="import" href="../hirst-action-dialog.html">
     <link rel="import" href="../../test-fixture/test-fixture.html">
   </head>
   <body>
 
     <test-fixture id="BasicDialogFixture">
       <template>
-        <komed-confirm-dialog
-          title="Congratulations"
-          title="Basic confirm dialog"
-          confirm-title="CONFIRM!"
-          dismiss-title="DISMISS!">
-        </komed-confirm-dialog>
+        <hirst-action-dialog title="Congratulations"></hirst-action-dialog>
       </template>
     </test-fixture>
 
@@ -30,7 +25,7 @@
       <template>
         <div id="container">
           <p id="attachToThis">Attach dialog to me</p>
-          <komed-confirm-dialog id="attachDialog" title="Congratulations" attach="#attachToThis"></komed-confirm-dialog>
+          <hirst-action-dialog id="attachDialog" title="Congratulations" attach="#attachToThis"></hirst-action-dialog>
         </div>
       </template>
     </test-fixture>
@@ -40,7 +35,7 @@
         <div id="container">
           <div>
             <div>
-              <komed-confirm-dialog title="Congratulations"></komed-confirm-dialog>
+              <hirst-action-dialog title="Congratulations"></hirst-action-dialog>
             </div>
           </div>
         </div>
@@ -48,17 +43,14 @@
     </test-fixture>
 
     <script>
-      suite('komed-confirm-dialog', function() {
+      suite('hirst-action-dialog', function() {
 
         test('opening basic dialog', function() {
-          var dialog = fixture('BasicDialogFixture').shadowRoot.querySelector('#dialogBase');
-          var dialogTitle = dialog.shadowRoot.querySelector('#dialog').querySelector('h2');
-          var confirmButton = dialog.querySelector('#confirmButton');
-          var dismissButton = dialog.querySelector('#dismissButton');
+          var dialog = fixture('BasicDialogFixture').shadowRoot.querySelector('#dialogBase').shadowRoot.querySelector('#dialog');
+          var dialogTitle = dialog.querySelector('h2');
+          var dialogClose = dialog.querySelector('[close]');
           expect(dialogTitle.textContent).to.be.eql('Congratulations');
-          expect(dismissButton).to.exist;
-          expect(confirmButton.textContent).to.be.equal('CONFIRM!');
-          expect(dismissButton.textContent).to.be.equal('DISMISS!');
+          expect(dialogClose).to.exist;
         });
 
         test('attaching dialog to a specific element', function() {
@@ -94,7 +86,7 @@
 
         test('opening dialog with opened property', function(done) {
           var container = fixture('DialogOpenedFixture');
-          var dialog = container.querySelector('komed-confirm-dialog');
+          var dialog = container.querySelector('hirst-action-dialog');
 
           // Open the dialog
           dialog.opened = true;
