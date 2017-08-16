@@ -1,32 +1,32 @@
-# komed-dialog
+# hirst-dialog
 
-`komed-dialog` is a Polymer-based web component to implement various dialogs for Komed-Health.
+`hirst-dialog` is a Polymer-based web component to implement web dialogs.
 
 ## How to use
 
 To install the element:
 ```
-$ bower install komed-dialog
+$ bower install hirst-dialog
 ```
 
-### komed-action-dialog
+### hirst-action-dialog
 ```html
-<komed-action-dialog
+<hirst-action-dialog
     id="dialog"
     title="Congratulations">
     It works!
-</komed-action-dialog>
+</hirst-action-dialog>
 ```
 
-### komed-confirm-dialog
+### hirst-confirm-dialog
 ```html
-<komed-confirm-dialog
+<hirst-confirm-dialog
     id="dialog"
     title="Congratulations"
     confirm-title="CONFIRM"
     dismiss-title="DISMISS">
     It works!
-</komed-confirm-dialog>
+</hirst-confirm-dialog>
 ```
 
 ## Development
@@ -53,7 +53,7 @@ $ polymer serve
 
 Then open the browser and go to the url the terminal or console implies, something like this:
 ```
-http://localhost:3030/components/komed-dialog/
+http://localhost:3030/components/hirst-dialog/
 ```
 
 ### Running Tests

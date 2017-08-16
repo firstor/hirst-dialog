@@ -1,25 +1,25 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-button/paper-button.html">
-<link rel="import" href="komed-dialog-base.html">
+<link rel="import" href="hirst-dialog-base.html">
 
 <!--
-`komed-confirm-dialog` renders a confirm dialog instance based on `komed-dialog-base`.
+`hirst-confirm-dialog` renders a confirm dialog instance based on `hirst-dialog-base`.
 It gives `confirm` and `dismiss` button as default.
 
 ### Example
 
 ```html
-<komed-confirm-dialog
+<hirst-confirm-dialog
   title="Congratulations"
   confirm="OK"
   dismiss="Cancel">
   It works!
-</komed-confirm-dialog>
+</hirst-confirm-dialog>
 ```
 
 @demo demo/index.html
 -->
-<dom-module id="komed-confirm-dialog">
+<dom-module id="hirst-confirm-dialog">
   <template>
     <style>
       :host {
@@ -29,38 +29,38 @@ It gives `confirm` and `dismiss` button as default.
       #confirmButtons {
         margin: auto;
         margin-top: 5%;
-        @apply --komed-dialog-buttons;
+        @apply --hirst-dialog-buttons;
       }
 
       #confirmButtons > paper-button {
         text-transform: none;
-        @apply --komed-dialog-button;
-        color: var(--komed-dialog-button-color, --komed-dialog-color);
-        width: var(--komed-dialog-button-width, 45%);
+        @apply --hirst-dialog-button;
+        color: var(--hirst-dialog-button-color, --hirst-dialog-color);
+        width: var(--hirst-dialog-button-width, 45%);
       }
     </style>
 
-    <komed-dialog-base id="dialogBase" title="{{title}}" opened="{{opened}}" attach="{{attach}}">
+    <hirst-dialog-base id="dialogBase" title="{{title}}" opened="{{opened}}" attach="{{attach}}">
       <slot></slot>
       <div id="confirmButtons">
         <paper-button id="confirmButton" raised on-click="confirm">[[confirmTitle]]</paper-button>
         <paper-button id="dismissButton" raised on-click="dismiss" hidden$="[[hideDismiss]]">[[dismissTitle]]</paper-button>
       </div>
-    </komed-dialog-base>
+    </hirst-dialog-base>
   </template>
 
   <script>
     /**
-     * `komed-confirm-dialog`
-     * komed-confirm-dialog
+     * `hirst-confirm-dialog`
+     * hirst-confirm-dialog
      *
      * @customElement
      * @polymer
      * @demo demo/index.html
      */
-    class KomedConfirmDialog extends Polymer.Element {
+    class HirstConfirmDialog extends Polymer.Element {
       static get is() {
-        return 'komed-confirm-dialog';
+        return 'hirst-confirm-dialog';
       }
 
       static get properties() {
@@ -155,6 +155,6 @@ It gives `confirm` and `dismiss` button as default.
       }
     }
 
-    window.customElements.define(KomedConfirmDialog.is, KomedConfirmDialog);
+    window.customElements.define(HirstConfirmDialog.is, HirstConfirmDialog);
   </script>
 </dom-module>

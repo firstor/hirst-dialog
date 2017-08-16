@@ -4,16 +4,16 @@
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
 
 <!--
-`komed-dialog-base` renders a dialog base instance, on which other dialogs will be based.
+`hirst-dialog-base` renders a dialog base instance, on which other dialogs will be based.
 It contains 'X' button out of the box.
 
 ### Example
 
 ```html
-<komed-dialog-base
+<hirst-dialog-base
   title="Congratulations">
   It works!
-</komed-dialog-base>
+</hirst-dialog-base>
 ```
 
 ### Styling
@@ -22,23 +22,23 @@ The following custom properties and mixins are available for styling:
 
 Custom property | Description | Default
 ----------------|-------------|----------
-`--komed-dialog` | Mixin applied to the dialog | `{}`
-`--komed-dialog-color` | Color of the dialog | `Based on the button's color`
-`--komed-dialog-max-width` | Max width of the dialog | `800px`
-`--komed-dialog-max-height` | Max height of the dialog | `600px`
-`--komed-dialog-title` | Mixin applied to the dialog title | `{}`
-`--komed-dialog-title-color` | Color of the dialog title | ``
-`--komed-dialog-close` | Mixin applied to the dialog close button | `{}`
-`--komed-dialog-close-color` | Color of the dialog close button | ``
-`--komed-dialog-close-size` | Size of the dialog close button | `32px`
-`--komed-dialog-buttons` | Mixin applied to the dialog buttons container | `{}`
-`--komed-dialog-button` | Mixin applied to the dialog button | `{}`
-`--komed-dialog-button-color` | Color of the dialog button | `--komed-dialog-color`
-`--komed-dialog-button-width` | Width of the dialog button | `45%`
+`--hirst-dialog` | Mixin applied to the dialog | `{}`
+`--hirst-dialog-color` | Color of the dialog | `Based on the button's color`
+`--hirst-dialog-max-width` | Max width of the dialog | `800px`
+`--hirst-dialog-max-height` | Max height of the dialog | `600px`
+`--hirst-dialog-title` | Mixin applied to the dialog title | `{}`
+`--hirst-dialog-title-color` | Color of the dialog title | ``
+`--hirst-dialog-close` | Mixin applied to the dialog close button | `{}`
+`--hirst-dialog-close-color` | Color of the dialog close button | ``
+`--hirst-dialog-close-size` | Size of the dialog close button | `32px`
+`--hirst-dialog-buttons` | Mixin applied to the dialog buttons container | `{}`
+`--hirst-dialog-button` | Mixin applied to the dialog button | `{}`
+`--hirst-dialog-button-color` | Color of the dialog button | `--hirst-dialog-color`
+`--hirst-dialog-button-width` | Width of the dialog button | `45%`
 
 @demo demo/index.html
 -->
-<dom-module id="komed-dialog-base">
+<dom-module id="hirst-dialog-base">
   <template>
     <style>
       paper-dialog {
@@ -47,15 +47,15 @@ Custom property | Description | Default
           height: 100vh;
           overflow: auto;
           padding: 0px;
-          @apply --komed-dialog;
-          color: var(--komed-dialog-color);
-          max-width: var(--komed-dialog-max-width, 800px);
-          max-height: var(--komed-dialog-max-height, 600px);
+          @apply --hirst-dialog;
+          color: var(--hirst-dialog-color);
+          max-width: var(--hirst-dialog-max-width, 800px);
+          max-height: var(--hirst-dialog-max-height, 600px);
         };
         --paper-dialog-title: {
           font-weight: bold;
-          @apply --komed-dialog-title;
-          color: var(--komed-dialog-title-color);
+          @apply --hirst-dialog-title;
+          color: var(--hirst-dialog-title-color);
         };
       }
 
@@ -65,10 +65,10 @@ Custom property | Description | Default
         top: 16px;
         margin: 0;
         padding: 0;
-        @apply --komed-dialog-close;
-        color: var(--komed-dialog-close-color);
-        width: var(--komed-dialog-close-size, 32px);
-        height: var(--komed-dialog-close-size, 32px);
+        @apply --hirst-dialog-close;
+        color: var(--hirst-dialog-close-color);
+        width: var(--hirst-dialog-close-size, 32px);
+        height: var(--hirst-dialog-close-size, 32px);
       }
     </style>
 
@@ -83,16 +83,16 @@ Custom property | Description | Default
 
   <script>
     /**
-     * `komed-dialog-base`
-     * komed-dialog-base
+     * `hirst-dialog-base`
+     * hirst-dialog-base
      *
      * @customElement
      * @polymer
      * @demo demo/index.html
      */
-    class KomedDialogBase extends Polymer.Element {
+    class HirstDialogBase extends Polymer.Element {
       static get is() {
-        return 'komed-dialog-base';
+        return 'hirst-dialog-base';
       }
 
       static get properties() {
@@ -157,6 +157,6 @@ Custom property | Description | Default
       }
     }
 
-    window.customElements.define(KomedDialogBase.is, KomedDialogBase);
+    window.customElements.define(HirstDialogBase.is, HirstDialogBase);
   </script>
 </dom-module>
