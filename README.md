@@ -1,4 +1,5 @@
 # hirst-dialog
+[![Travis state](https://travis-ci.org/first87/hirst-dialog.svg?branch=master)](https://travis-ci.org/first87/hirst-dialog)
 
 `hirst-dialog` is a Polymer-based web component to implement web dialogs.
 
