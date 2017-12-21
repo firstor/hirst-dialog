@@ -143,6 +143,7 @@ Custom property | Description | Default
         // Attach dialog, to ensure it's on top of all existing overlays
         Polymer.dom(attachTo).appendChild(handle ? handle : this);
         document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
 
         // Wait until dialog is added to the DOM (required for Safari)
         setTimeout(function() {
@@ -155,6 +156,7 @@ Custom property | Description | Default
       */
       close() {
         document.body.style.position = '';
+        document.body.style.width = '';
         this.$.dialog.close();
       }
     }
