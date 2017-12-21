@@ -125,11 +125,11 @@ Custom property | Description | Default
       }
 
       /**
-      * Open the dialog
-      *
-      * @handle {Object} optional dialog handle, typically given as the parent element
-      *    of this element in order to attach the proper instance to the DOM tree
-      */
+       * Open the dialog
+       *
+       * @handle {Object} optional dialog handle, typically given as the parent element
+       *    of this element in order to attach the proper instance to the DOM tree
+       */
       open(handle) {
         // Determine where the dialog is attached to
         var attachTo = null;
@@ -143,6 +143,8 @@ Custom property | Description | Default
         // Attach dialog, to ensure it's on top of all existing overlays
         Polymer.dom(attachTo).appendChild(handle ? handle : this);
 
+        this._applyPatch();
+
         // Wait until dialog is added to the DOM (required for Safari)
         setTimeout(function() {
           this.$.dialog.open();
@@ -150,10 +152,37 @@ Custom property | Description | Default
       }
 
       /**
-      * Close the dialog
-      */
+       * Close the dialog
+       */
       close() {
+        this._restorePatch();
         this.$.dialog.close();
+      }
+
+      /**
+       * Apply patch before dialog opened
+       */
+      _applyPatch() {
+        if (this._isIOS11()) {
+          this._bodyPosition = document.body.style.position;
+          this._bodyWidth = document.body.style.width;
+          document.body.style.position = 'fixed';
+          document.body.style.width = document.body.style.width ? document.body.style.width : '100%';
+        }
+      }
+
+      /**
+       * Restore patch after dialog closed
+       */
+      _restorePatch() {
+        if (this._isIOS11()) {
+          document.body.style.position = this._bodyPosition;
+          document.body.style.width = this._bodyWidth;
+        }
+      }
+
+      _isIOS11() {
+        return /iPad|iPhone|iPod/.test(navigator.userAgent) && /OS 11_/.test(navigator.userAgent);
       }
     }
 
