@@ -142,6 +142,9 @@ Custom property | Description | Default
 
         // Attach dialog, to ensure it's on top of all existing overlays
         Polymer.dom(attachTo).appendChild(handle ? handle : this);
+
+        this._bodyPosition = document.body.style.position;
+        this._bodyWidth = document.body.style.width;
         document.body.style.position = 'fixed';
         document.body.style.width = '100%';
 
@@ -155,8 +158,8 @@ Custom property | Description | Default
       * Close the dialog
       */
       close() {
-        document.body.style.position = '';
-        document.body.style.width = '';
+        document.body.style.position = this._bodyPosition;
+        document.body.style.width = this._bodyWidth;
         this.$.dialog.close();
       }
     }
