@@ -167,7 +167,7 @@ Custom property | Description | Default
           this._bodyPosition = document.body.style.position;
           this._bodyWidth = document.body.style.width;
           document.body.style.position = 'fixed';
-          document.body.style.width = '100%';
+          document.body.style.width = document.body.style.width ? document.body.style.width : '100%';
         }
       }
 
