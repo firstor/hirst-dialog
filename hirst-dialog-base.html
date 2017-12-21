@@ -143,10 +143,14 @@ Custom property | Description | Default
         // Attach dialog, to ensure it's on top of all existing overlays
         Polymer.dom(attachTo).appendChild(handle ? handle : this);
 
-        this._bodyPosition = document.body.style.position;
-        this._bodyWidth = document.body.style.width;
-        document.body.style.position = 'fixed';
-        document.body.style.width = '100%';
+        var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        var iOSv11 = /OS 11_0_1|OS 11_0_2|OS 11_0_3|OS 11_1/.test(navigator.userAgent);
+        if (iOS && iOSv11) {
+          this._bodyPosition = document.body.style.position;
+          this._bodyWidth = document.body.style.width;
+          document.body.style.position = 'fixed';
+          document.body.style.width = '100%';
+        }
 
         // Wait until dialog is added to the DOM (required for Safari)
         setTimeout(function() {
