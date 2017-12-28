@@ -175,9 +175,19 @@ Custom property | Description | Default
         }
         if (this._isIOS11()) {
           this._bodyPosition = document.body.style.position;
+          this._bodyLeft = document.body.style.left;
+          this._bodyTop = document.body.style.top;
           this._bodyWidth = document.body.style.width;
+          this._bodyHeight = document.body.style.height;
+          this._bodyOverflow = document.body.style.overflow;
+          this._docScrollX = window.scrollX;
+          this._docScrollY = window.scrollY;
           document.body.style.position = 'fixed';
+          document.body.style.left = -this._docScrollX + 'px';
+          document.body.style.top = -this._docScrollY + 'px';
           document.body.style.width = document.body.style.width ? document.body.style.width : '100%';
+          document.body.style.height = '100%';
+          document.body.style.overflow = 'hidden';
         }
       }
 
@@ -190,7 +200,12 @@ Custom property | Description | Default
         }
         if (this._isIOS11()) {
           document.body.style.position = this._bodyPosition;
+          document.body.style.left = this._bodyLeft;
+          document.body.style.top = this._bodyTop;
           document.body.style.width = this._bodyWidth;
+          document.body.style.height = this._bodyHeight;
+          document.body.style.overflow = this._bodyOverflow;
+          window.scrollTo(this._docScrollX, this._docScrollY);
         }
       }
 
