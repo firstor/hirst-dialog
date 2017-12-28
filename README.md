@@ -30,6 +30,17 @@ $ bower install hirst-dialog
 </hirst-confirm-dialog>
 ```
 
+## Disable Patch
+
+The component involves `patch`, the workaround of bugs that may happen on different targets. The bugs can be fixed with the `patch`, e.g. [Wrong caret position bug on iOS 11](https://bugs.webkit.org/show_bug.cgi?id=176896).
+
+By default, the `patch` is enabled, but it can't be disabled with the following:
+```html
+<body hirst-dialog-patch="disabled">
+    ...
+</hirst-confirm-dialog>
+```
+
 ## Development
 
 ### Prerequisites
