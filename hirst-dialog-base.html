@@ -165,17 +165,10 @@ Custom property | Description | Default
       }
 
       /**
-       * Check if patch is enabled for the component
-       */
-      _patchEnabled() {
-        return document.body.getAttribute('hirst-dialog-patch') !== null;
-      }
-
-      /**
        * Apply patch before dialog opened
        */
       _applyPatch() {
-        if (!this._patchEnabled() || this._patchApplied) {
+        if (this._patchDisabled() || this._patchApplied) {
           return;
         }
 
@@ -203,7 +196,7 @@ Custom property | Description | Default
        * Restore patch after dialog closed
        */
       _restorePatch() {
-        if (!this._patchEnabled() || !this._patchApplied) {
+        if (this._patchDisabled() || !this._patchApplied) {
           return;
         }
 
@@ -218,6 +211,13 @@ Custom property | Description | Default
           document.body.style.overflow = this._bodyOverflow;
           window.scrollTo(this._docScrollX, this._docScrollY);
         }
+      }
+
+      /**
+       * Check if dialog patch is disabled
+       */
+      _patchDisabled() {
+        return document.body.getAttribute('hirst-dialog-patch') === 'disabled';
       }
 
       /**
