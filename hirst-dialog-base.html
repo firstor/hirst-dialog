@@ -175,9 +175,12 @@ Custom property | Description | Default
        * Apply patch before dialog opened
        */
       _applyPatch() {
-        if (!this._patchEnabled()) {
+        if (!this._patchEnabled() || this._patchApplied) {
           return;
         }
+
+        this._patchApplied = true;
+
         if (this._isIOS11()) {
           this._bodyPosition = document.body.style.position;
           this._bodyLeft = document.body.style.left;
@@ -200,9 +203,12 @@ Custom property | Description | Default
        * Restore patch after dialog closed
        */
       _restorePatch() {
-        if (!this._patchEnabled()) {
+        if (!this._patchEnabled() || !this._patchApplied) {
           return;
         }
+
+        this._patchApplied = false;
+
         if (this._isIOS11()) {
           document.body.style.position = this._bodyPosition;
           document.body.style.left = this._bodyLeft;
@@ -214,6 +220,9 @@ Custom property | Description | Default
         }
       }
 
+      /**
+       * Patch target - Safari on iOS 11
+       */
       _isIOS11() {
         return /iPad|iPhone|iPod/.test(navigator.userAgent) && /OS 11_/.test(navigator.userAgent);
       }
