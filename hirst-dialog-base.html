@@ -160,9 +160,19 @@ Custom property | Description | Default
       }
 
       /**
+       * Check if patch is enabled for the component
+       */
+      _patchEnabled() {
+        return document.body.getAttribute('hirst-dialog-patch') !== null;
+      }
+
+      /**
        * Apply patch before dialog opened
        */
       _applyPatch() {
+        if (!this._patchEnabled()) {
+          return;
+        }
         if (this._isIOS11()) {
           this._bodyPosition = document.body.style.position;
           this._bodyWidth = document.body.style.width;
@@ -175,6 +185,9 @@ Custom property | Description | Default
        * Restore patch after dialog closed
        */
       _restorePatch() {
+        if (!this._patchEnabled()) {
+          return;
+        }
         if (this._isIOS11()) {
           document.body.style.position = this._bodyPosition;
           document.body.style.width = this._bodyWidth;
