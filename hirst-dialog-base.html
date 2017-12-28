@@ -42,6 +42,11 @@ Custom property | Description | Default
   <template>
     <style>
       paper-dialog {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin: 0px;
+        transform: translate(-50%, -50%);
         --paper-dialog: {
           width: 100vw;
           height: 100vh;
@@ -163,11 +168,27 @@ Custom property | Description | Default
        * Apply patch before dialog opened
        */
       _applyPatch() {
+        if (this._patchDisabled() || this._patchApplied) {
+          return;
+        }
+
+        this._patchApplied = true;
+
         if (this._isIOS11()) {
           this._bodyPosition = document.body.style.position;
+          this._bodyLeft = document.body.style.left;
+          this._bodyTop = document.body.style.top;
           this._bodyWidth = document.body.style.width;
+          this._bodyHeight = document.body.style.height;
+          this._bodyOverflow = document.body.style.overflow;
+          this._docScrollX = window.scrollX;
+          this._docScrollY = window.scrollY;
           document.body.style.position = 'fixed';
+          document.body.style.left = -this._docScrollX + 'px';
+          document.body.style.top = -this._docScrollY + 'px';
           document.body.style.width = document.body.style.width ? document.body.style.width : '100%';
+          document.body.style.height = '100%';
+          document.body.style.overflow = 'hidden';
         }
       }
 
@@ -175,12 +196,33 @@ Custom property | Description | Default
        * Restore patch after dialog closed
        */
       _restorePatch() {
+        if (this._patchDisabled() || !this._patchApplied) {
+          return;
+        }
+
+        this._patchApplied = false;
+
         if (this._isIOS11()) {
           document.body.style.position = this._bodyPosition;
+          document.body.style.left = this._bodyLeft;
+          document.body.style.top = this._bodyTop;
           document.body.style.width = this._bodyWidth;
+          document.body.style.height = this._bodyHeight;
+          document.body.style.overflow = this._bodyOverflow;
+          window.scrollTo(this._docScrollX, this._docScrollY);
         }
       }
 
+      /**
+       * Check if dialog patch is disabled
+       */
+      _patchDisabled() {
+        return document.body.getAttribute('hirst-dialog-patch') === 'disabled';
+      }
+
+      /**
+       * Patch target - Safari on iOS 11
+       */
       _isIOS11() {
         return /iPad|iPhone|iPod/.test(navigator.userAgent) && /OS 11_/.test(navigator.userAgent);
       }
