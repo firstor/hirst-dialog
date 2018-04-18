@@ -13,12 +13,14 @@ jobs:
                 name: Prerequisites
                 command: |
                     npm config set prefix ~/.npm-global
-                    npm config get prefix
                     npm i -g polymer-cli --unsafe-perm
                     npm i -g bower
             - run:
                 name: Install components
-                command: bower install
+                command: |
+                    npm config get prefix
+                    npm ls --depth=0 --global
+                    bower install
             - run:
                 name: Run tests
                 command: polymer test
