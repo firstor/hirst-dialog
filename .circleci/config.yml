@@ -12,9 +12,10 @@ jobs:
             - run:
                 name: Prerequisites
                 command: |
-                    sudo npm i -g node-gyp
-                    sudo npm i -g polymer-cli
-                    sudo npm i -g bower
+                    npm config set prefix ~/.npm-global
+                    npm config get prefix
+                    npm i -g polymer-cli --unsafe-perm
+                    npm i -g bower
             - run:
                 name: Install components
                 command: bower install
