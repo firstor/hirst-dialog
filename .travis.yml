@@ -1,8 +1,10 @@
 dist: trusty
-sudo: required
+sudo: false
 group: beta
 addons:
-  chrome: stable
+  apt:
+    packages:
+      - google-chrome-stable
   firefox: '49.0.2'
 
 language: node_js
