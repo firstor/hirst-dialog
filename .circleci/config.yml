@@ -10,9 +10,13 @@ jobs:
         steps:
             - checkout
             - run:
-                name: Prerequisites
+                name: Change npm-global directory
                 command: |
                     npm config set prefix ~/.npm-global
+                    echo 'export PATH=~/.npm-global/bin:$PATH' >> $BASH_ENV
+            - run:
+                name: Prerequisites
+                command: |
                     npm i -g polymer-cli --unsafe-perm
                     npm i -g bower
             - run:
