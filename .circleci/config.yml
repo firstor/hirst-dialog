@@ -12,6 +12,7 @@ jobs:
             - run:
                 name: Prerequisites
                 command: |
+                    sudo npm i -g node-gyp
                     sudo npm i -g polymer-cli
                     sudo npm i -g bower
             - run:
