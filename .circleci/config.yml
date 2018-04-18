@@ -1,0 +1,22 @@
+version: 2
+jobs:
+    build:
+        docker:
+            - image: circleci/node:8.9
+
+        environment:
+            BS_PROJECT: "hirst-dialog on CircleCI"
+
+        steps:
+            - checkout
+            - run:
+                name: Prerequisites
+                command: |
+                    npm i -g polymer-cli
+                    npm i -g bower
+            - run:
+                name: Install components
+                command: bower install
+            - run:
+                name: Run tests
+                command: polymer test
