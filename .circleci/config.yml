@@ -12,8 +12,8 @@ jobs:
             - run:
                 name: Prerequisites
                 command: |
-                    npm i -g polymer-cli
-                    npm i -g bower
+                    sudo npm i -g polymer-cli
+                    sudo npm i -g bower
             - run:
                 name: Install components
                 command: bower install
