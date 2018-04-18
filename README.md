@@ -38,7 +38,7 @@ By default, the `patch` is enabled, but it can't be disabled with the following:
 ```html
 <body hirst-dialog-patch="disabled">
     ...
-</hirst-confirm-dialog>
+</body>
 ```
 
 ## Development
@@ -66,6 +66,11 @@ $ polymer serve
 Then open the browser and go to the url the terminal or console implies, something like this:
 ```
 http://localhost:3030/components/hirst-dialog/
+```
+
+Or you may indicate different hostname and port to serve from
+```
+$ polymer serve --hostname 10.20.21.51 --port 80
 ```
 
 ### Running Tests

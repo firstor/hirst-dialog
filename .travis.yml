@@ -4,18 +4,18 @@ group: beta
 
 language: node_js
 node_js:
-- node
+  - node
 addons:
   firefox: '49.0.2'
 cache:
   directories:
-  - node_modules
-  - "$HOME/.cache/bower"
+    - node_modules
+    - "$HOME/.cache/bower"
 before_install:
-- "[ x$(cat node_modules/.last-node-version 2>/dev/null) = x$(node -e 'console.log(process.version)') ] || (npm rebuild && node -e 'console.log(process.version)' > node_modules/.last-node-version)"
+  - "[ x$(cat node_modules/.last-node-version 2>/dev/null) = x$(node -e 'console.log(process.version)') ] || (npm rebuild && node -e 'console.log(process.version)' > node_modules/.last-node-version)"
 before_script:
-- npm install web-component-tester bower@1.8.2 polylint
-- $(npm bin)/bower install
-- $(npm bin)/polylint --no-recursion
+  - npm install web-component-tester bower@1.8.2 polylint
+  - $(npm bin)/bower install
+  - $(npm bin)/polylint --no-recursion
 script:
-- xvfb-run $(npm bin)/wct
+  - xvfb-run $(npm bin)/wct
