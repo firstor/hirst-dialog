@@ -17,6 +17,13 @@ jobs:
                     npm i -g polymer-cli --unsafe-perm
                     npm i -g bower
             - run:
+                name: Update Chrome driver
+                command: |
+                    sudo apt-get update
+                    sudo apt-get install google-chrome-stable
+                    chrome --version
+                    googlechrome --version
+            - run:
                 name: Update Firefox driver
                 command: |
                     sudo apt-get remove firefox-mozilla-build binutils &&
