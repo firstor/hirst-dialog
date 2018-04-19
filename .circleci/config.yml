@@ -1,0 +1,41 @@
+version: 2
+jobs:
+    build:
+        docker:
+            - image: circleci/node:8.11.1-browsers
+
+        environment:
+            BS_PROJECT: "hirst-dialog on CircleCI"
+
+        steps:
+            - checkout
+            - run:
+                name: Prerequisites
+                command: |
+                    npm config set prefix ~/.npm-global
+                    echo 'export PATH=~/.npm-global/bin:$PATH' >> $BASH_ENV
+                    npm i -g polymer-cli --unsafe-perm
+                    npm i -g bower
+            - run:
+                name: Update Chrome driver
+                command: |
+                    sudo apt install -y libappindicator3-1
+                    curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb &&
+                    sudo dpkg -i google-chrome.deb &&
+                    sudo sed -i 's|HERE/chrome"|HERE/chrome" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome &&
+                    rm google-chrome.deb &&
+                    google-chrome-stable --version
+            - run:
+                name: Update Firefox driver
+                command: |
+                    sudo apt-get remove firefox-mozilla-build binutils &&
+                    sudo sh -c "echo 'deb http://ftp.hr.debian.org/debian sid main' >> /etc/apt/sources.list" &&
+                    sudo apt-get update &&
+                    sudo apt-get install -t sid firefox &&
+                    firefox --version
+            - run:
+                name: Install components
+                command: bower install
+            - run:
+                name: Run tests
+                command: polymer test
