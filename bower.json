@@ -1,7 +1,7 @@
 {
   "name": "hirst-dialog",
   "description": "Polymer-based web component to implement web dialogs",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "homepage": "https://github.com/firstor/hirst-dialog",
   "main": "hirst-dialog.html",
   "dependencies": {
