@@ -1,7 +1,7 @@
 # hirst-dialog
 
-[![CircleCI](https://circleci.com/gh/first87/hirst-dialog.svg?style=svg)](https://circleci.com/gh/first87/hirst-dialog)
-[![Travis state](https://travis-ci.org/first87/hirst-dialog.svg?branch=master)](https://travis-ci.org/first87/hirst-dialog)
+[![CircleCI](https://circleci.com/gh/firstor/hirst-dialog.svg?style=svg)](https://circleci.com/gh/firstor/hirst-dialog)
+[![Travis state](https://travis-ci.org/firstor/hirst-dialog.svg?branch=master)](https://travis-ci.org/firstor/hirst-dialog)
 
 `hirst-dialog` is a Polymer-based web component to implement web dialogs.
 

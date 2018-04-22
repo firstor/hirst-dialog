@@ -2,7 +2,7 @@
   "name": "hirst-dialog",
   "description": "Polymer-based web component to implement web dialogs",
   "version": "1.0.3",
-  "homepage": "https://github.com/first87/hirst-dialog",
+  "homepage": "https://github.com/firstor/hirst-dialog",
   "main": "hirst-dialog.html",
   "dependencies": {
     "iron-icons": "PolymerElements/iron-icons#^2.0.0",
